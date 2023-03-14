@@ -1,0 +1,195 @@
+/* Always remember to responsive-ify your code.
+if you don't have the balls to do this, then
+you don't need to be making websites like this
+in the current year, 2021. grow a pair, take
+the time, and make it easier for the next guy,
+please. */
+/* font imports */
+/* if there's anything i got right, it was this part right here.
+good job, Blake -Blake */
+
+/* Nunito */
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+/* Alegreya Sans */
+@import url("https://fonts.googleapis.com/css?family=Alegreya+Sans+SC");
+
+/* global constants: */
+:root {
+	/*color vars*/
+	--background-base: rgb(11, 110, 69);
+	--background-overlay:rgba(51, 0, 110, 0.151);
+	--text-color-accent: rgb(255, 192, 0);
+	--soundcloud-orange: rgb(255, 102, 0);
+	--tumblr-blue-dark: rgb(0, 25, 53);
+	--text-background-none: rgba(0, 0, 0, 0);
+	--text-color-foreground: rgb(255, 255, 255);
+	--transparent:rgba(0,0,0,0);
+	/*font vars*/
+	--text-font-info: "Nunito", sans-serif;
+	/*size vars*/
+	--font-readable-size: 14pt;
+	--font-heading-size: 32pt;
+	--block-border-radius: 15px;
+	/*scale vars*/
+	--page-scale-factor: 5vw;
+	--page-time-scale: 0.5s;
+}
+
+/* enforce box-sizing standard on all children */
+* {
+	box-sizing: border-box;
+}
+
+html {
+	background-color: var(--background-base);
+}
+
+body {
+	text-align: center;
+}
+
+p,
+a,
+h1 {
+	font-family: var(--text-font-info);
+	color: var(--text-color-foreground);
+}
+
+p,
+a {
+	font-size: var(--font-readable-size);
+}
+
+h1 {
+	font-size: var(--font-heading-size);
+}
+
+div {
+	display:inline-table;
+	/*margin-left:calc(100px/var(--page-scale-factor));
+	margin-right:calc(100px/var(--page-scale-factor));*/
+	margin-left:24px;
+	margin-right:24px;
+	margin-bottom: var(--page-scale-factor);
+	border-style: solid;
+	border-color: rgba(40, 40, 100, 0);
+	border-radius: var(--block-border-radius);
+	background-color: var(--background-overlay);
+	padding: var(--page-scale-factor);
+}
+
+div.parent {
+	background-color: var(--background-overlay);
+}
+
+div.left {
+	display:inline;
+}
+
+a {
+	border-style: none;
+	border-radius: none;
+	background-color: var(--background-overlay);
+	text-decoration: none;
+	font-weight: bold;
+	margin-bottom: 10vw;
+	transition: font-weight var(--page-time-scale), margin-bottom var(--page-time-scale), color var(--page-time-scale),
+		border-radius var(--page-time-scale);
+}
+
+a:hover {
+	color: var(--text-color-accent);
+	border-radius: var(--block-border-radius);
+	margin-bottom: 2vw;
+}
+
+a.soundcloud {
+	color: var(--text-color-fg);
+	background-color: var(--text-background-none);
+	border-radius: none;
+	font-weight: normal;
+	font-size: inherit;
+	cursor: pointer;
+	transition: background var(--page-time-scale), border-radius var(--page-time-scale);
+	-webkit-transition: background var(--page-time-scale), border-radius var(--page-time-scale);
+}
+
+a.soundcloud:hover {
+	color: var(--text-color-fg);
+	border-style: solid;
+	border-color: rgba(0, 0, 0, 0);
+	border-radius: 8px 8px 8px 8px;
+	background-color: var(--soundcloud-orange);
+}
+
+a.tumblr {
+	color: inherit;
+	background-color: inherit;
+	border-radius: none;
+	font-size: inherit;
+	cursor: pointer;
+	transition: background var(--page-time-scale), border-radius var(--page-time-scale);
+	-webkit-transition: background var(--page-time-scale), border-radius var(--page-time-scale);
+}
+a.tumblr:hover {
+	color: fff;
+	border-style: solid;
+	border-color: var(--text-background-none);
+	border-radius: 8px;
+	background-color: var(--tumblr-blue-dark);
+}
+
+/* screen widths greater than 600px */
+@media screen and (min-width: 601px) {
+}
+
+/* screen widths less than 600px (inclusive) */
+@media screen and (max-width: 600px) {
+	
+	/* force single-column layout for non-landscape devices */
+	div.left {
+		float: none;
+		clear: both;
+	}
+}
+
+/*
+@media () {
+	:root {
+		--text-color-fg: #fff;
+	}
+
+	html {
+		background-repeat: repeat-y;
+		background-size: 100% auto;
+		background-position: top;
+		background-attachment: fixed;
+	}
+
+	
+	body {
+		text-align: center;
+	}
+
+
+	p {
+		background-color: rgba(0, 0, 0, 0);
+		color: var(--text-color-fg);
+		font-family: var(--text-font-info);
+	}
+
+	h1 {
+		background-color: none;
+		font: var(--text-font-info);
+		color: (var(--text-color-fg));
+	}
+
+	div {
+		border-style: solid;
+		border-width: 2px;
+		border-color: rgba(40, 40, 100, 0);
+		border-radius: 7px;
+		background-color: var(--background-overlay);
+	}
+
+*/
