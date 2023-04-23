@@ -38,7 +38,7 @@ please. */
 	--font-heading-size: 32pt;
 	--block-border-radius: 15px;
 	/*scale vars*/
-	--page-scale-factor: 5vw;
+	--page-scale-factor: 3vw;
 	--page-time-scale: 0.5s;
 }
 
@@ -52,9 +52,9 @@ html {
 }
 
 body {
-	text-align: center;
+	text-align: left;
+	
 }
-
 ul {
 	list-style: none;
 	align-items:left;
@@ -68,7 +68,7 @@ ul li::before {
 	width: 1em;
 	
 }
-p,a,h1 {
+p,a,h1,h2,h3,h4,h5,h6 {
 	font-family: var(--text-font-info);
 	color: var(--text-color-foreground);
 }
@@ -83,9 +83,6 @@ h1 {
 }
 
 div {
-	display:inline-table;
-	/*margin-left:calc(100px/var(--page-scale-factor));
-	margin-right:calc(100px/var(--page-scale-factor));*/
 	margin-left:24px;
 	margin-right:24px;
 	margin-bottom: var(--page-scale-factor);
@@ -101,8 +98,16 @@ div.parent {
 }
 
 div.left {
-	display:inline;
+	/*display:inline;*/
 }
+.staple {
+	display:inline-table;
+	clear:both;
+}
+/*.squeeze {
+	display:flex;
+	clear:none;
+}*/
 
 a {
 	padding:4px;
@@ -160,11 +165,19 @@ a.tumblr:hover {
 }
 
 /* screen widths greater than 600px */
-@media screen and (min-width: 601px) {
+@media screen and (min-aspect-ratio: 1000001/1000000) {
+	.squeeze {
+		display:flex;
+		clear:none;
+	}
 }
 
 /* screen widths less than 600px (inclusive) */
-@media screen and (max-width: 600px) {
+@media screen and (max-aspect-ratio: 1/1) and (width <= 600px) {
+	.squeeze {
+		float:none;
+		clear:both;
+	}
 	
 	/* force single-column layout for non-landscape devices */
 	div.left {
