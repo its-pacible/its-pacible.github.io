@@ -19,6 +19,8 @@ please. */
 @import url("https://fonts.googleapis.com/css?family=Nunito");
 /* Alegreya Sans */
 @import url("https://fonts.googleapis.com/css?family=Alegreya+Sans+SC");
+/* Fira Code */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@360&display=swap');
 
 /* global constants: */
 :root {
@@ -59,32 +61,41 @@ ul {
 	list-style: none;
 	align-items:left;
 	text-align: left;
+	padding-left:2px;
+	margin-left:2px;
 }
 
-ul li::before {
-	content: "\2022";
-	color: var(--text-color-foreground);
-	display: inline-block;
-	width: 1em;
-	
-}
 p,a,h1,h2,h3,h4,h5,h6 {
 	font-family: var(--text-font-info);
 	color: var(--text-color-foreground);
 }
+
 
 p,
 a {
 	font-size: var(--font-readable-size);
 }
 
+pre {
+	border-style:none;
+	border-radius:var(--page-scale-factor);
+	overflow: hidden;
+}
+code {
+	font-family:"Fira Code",mono;
+	font-size: calc(var(--font-readable-size) * 0.7);
+	
+}
+.language-rust {
+	background-color:rgba(0,0,0,0);
+}
 h1 {
 	font-size: var(--font-heading-size);
 }
 
 div {
-	margin-left:24px;
-	margin-right:24px;
+	margin-left:20px;
+	margin-right:20px;
 	margin-bottom: var(--page-scale-factor);
 	border-style: solid;
 	border-color: rgba(40, 40, 100, 0);
@@ -104,10 +115,12 @@ div.left {
 	display:inline-table;
 	clear:both;
 }
-/*.squeeze {
+/*
+.squeeze {
 	display:flex;
 	clear:none;
-}*/
+}
+*/
 
 a {
 	padding:4px;
@@ -185,44 +198,3 @@ a.tumblr:hover {
 		clear: both;
 	}
 }
-
-/*
-@media () {
-	:root {
-		--text-color-fg: #fff;
-	}
-
-	html {
-		background-repeat: repeat-y;
-		background-size: 100% auto;
-		background-position: top;
-		background-attachment: fixed;
-	}
-
-	
-	body {
-		text-align: center;
-	}
-
-
-	p {
-		background-color: rgba(0, 0, 0, 0);
-		color: var(--text-color-fg);
-		font-family: var(--text-font-info);
-	}
-
-	h1 {
-		background-color: none;
-		font: var(--text-font-info);
-		color: (var(--text-color-fg));
-	}
-
-	div {
-		border-style: solid;
-		border-width: 2px;
-		border-color: rgba(40, 40, 100, 0);
-		border-radius: 7px;
-		background-color: var(--background-overlay);
-	}
-
-*/
