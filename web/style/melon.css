@@ -36,7 +36,7 @@ please. */
 	/*font vars*/
 	--text-font-info: "Nunito", sans-serif;
 	/*size vars*/
-	--font-readable-size: 14pt;
+	--font-readable-size: 12pt;
 	--font-heading-size: 32pt;
 	--block-border-radius: 15px;
 	/*scale vars*/
@@ -64,8 +64,12 @@ ul {
 	padding-left:2px;
 	margin-left:2px;
 }
-
-p,a,h1,h2,h3,h4,h5,h6 {
+img {
+	height: 250px;
+	border-style:none;
+	border-radius:var(--block-border-radius);
+}
+p,h1,h2,h3,h4,h5,h6 {
 	font-family: var(--text-font-info);
 	color: var(--text-color-foreground);
 }
@@ -74,16 +78,19 @@ p,a,h1,h2,h3,h4,h5,h6 {
 p,
 a {
 	font-size: var(--font-readable-size);
+	color: var(--text-color-foreground);
 }
-
+a {
+	color: #e8c8a7;
+}
 pre {
 	border-style:none;
-	border-radius:var(--page-scale-factor);
+	border-radius:var(--block-border-radius);
 	overflow: hidden;
 }
 code {
 	font-family:"Fira Code",mono;
-	font-size: calc(var(--font-readable-size) * 0.7);
+	font-size: calc(var(--font-readable-size) * 0.85)
 	
 }
 .language-rust {
@@ -176,7 +183,6 @@ a.tumblr:hover {
 	border-radius: 8px;
 	background-color: var(--tumblr-blue-dark);
 }
-
 /* screen widths greater than 600px */
 @media screen and (min-aspect-ratio: 1000001/1000000) {
 	.squeeze {
