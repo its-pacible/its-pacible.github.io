@@ -16,10 +16,10 @@
         <div class="staple">
             <h1>Nope it's not a square, I promise</h1>
             <h5>Gaynor, Blake / PacRat</h5>
-            <h6>2023-05-24 | </h6>
+            <h6>2023-05-25 | </h6>
         </div>
         <div class="staple">
-            <p id="Intro">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recently, I had a class project where I was
+            <p id="Intro">Recently, I had a class project where I was
                 tasked with
                 making a tic-tac-toe clone, which would take user inputs via the console and test to see each turn if
                 anyone had created a line, and who it was. What I imagine is obvious to you reading this, if you've had
@@ -27,11 +27,11 @@
                 used. All went well, me and my teammate recieved an A, and the problem was both surface level, and is
                 out of the scope (mostly) of this article. Once we submitted our work, I took it upon myself to scrub
                 through the existing code and see what else I could do to spice my copy up.</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter, once more, 2D array - but also <em>exit</em> one
+            <p>Enter, once more, 2D array - but also <em>exit</em> one
                 dimension; I am talking now, of course, about a single-dimension array (coloquially known simply as the
                 "array"). I figured that there might be a fun way to relate the math of traversing a <em>1D space</em>
                 (in a 2D manner) to a <em>2D space</em></p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; So let's whip up a little 9-element (3x3) array to
+            <p> So let's whip up a little 9-element (3x3) array to
                 represent this idea. My language of choice at the time of writing is <a
                     href="https://doc.rust-lang.org/book/ch00-00-introduction.html">rust</a>, but for extra credit i'd
                 encourage you to try in a different language you might like!</p>
@@ -53,22 +53,22 @@ fn main() {
         ['a','b','c','d','e','f','g','h','i'];
 }
             </code></pre>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There you have it, your square! No, it dosen't look like
+            <p>There you have it, your square! No, it dosen't look like
                 it yet, but it will soon! Doing that takes some math and pattern-recognition skills.</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The crackhead math I scribbled out when I was beginning
+            <p>The crackhead math I scribbled out when I was beginning
                 to do my math homework ensued, and after about 2 hours of head-scratching, I had rendered my math (where
                 'x' would be your position in the array) as a crappy drawing, shown here:</p><img
                 style="filter:hue-rotate(170deg) saturate(1000%);mix-blend-mode:multiply;"
                 src="https://media.discordapp.net/attachments/534448775566196746/1077719546695266406/Screenshot_2023-02-21_14-32-25.png" />
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Cool! the hard work is done", you may be saying; this
+            <p>"Cool! the hard work is done", you may be saying; this
                 isn't the case, however, as I soon figured out as well. Keeping track, we are about 45% done with the
                 concept at this point, as we still have the matter of traversal and boudaries to sort out.</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;So let's do that.</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Left and right traversal seem pretty straightforward, as
+            <p>So let's do that.</p>
+            <p>Left and right traversal seem pretty straightforward, as
                 that is linear travel across a line - moving the index "x" to x+1 moves you to the "right", and x-1 to
                 the "left", respectively. Awesome. That's half of our axes roughed out!</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;So let's try to move up and down.</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initially I struggled to find a pattern thatr elegantly
+            <p>So let's try to move up and down.</p>
+            <p>Initially I struggled to find a pattern thatr elegantly
                 related the indices north/south of 'x' to a mathematical equation. This was because I was younger, more
                 blind, and more stupid; upon playing with the above math (and tediously hand-writing the mathematical
                 steps out for what a "move" south looks like) I found that moving to either "row" is directly related to
@@ -76,8 +76,8 @@ fn main() {
                 line, and likewise subtracting the width will cause you to move "up".</p>
             <img style="mix-blend-mode:multiply;"
                 src="https://cdn.discordapp.com/attachments/193119085247070218/1111081408077758475/image.png" />
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alright, now we're cooking!</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now, all we have to worry about is the boundaries for the
+            <p>Alright, now we're cooking!</p>
+            <p>Now, all we have to worry about is the boundaries for the
                 sides of our "square". once you go "right" at the edge, it should block you and cause you not to
                 advance, and trying to move farther south should as well; as it stands, the x position will jump to the
                 bottom left corner if you attempt to move 2 spaces to the right, and if you try to move 2 spaces down,
@@ -86,33 +86,33 @@ fn main() {
                 below.</p>
             <img style="mix-blend-mode:multiply;"
                 src="https://media.discordapp.net/attachments/193119085247070218/1111082345768956055/image.png" />
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;So how do we stop this? These seem like glaring issues,
+            <p>So how do we stop this? These seem like glaring issues,
                 after all. I pondered this his is about the time I remembered one of the worst recurring part of my
                 educational career with math: long division - and more specifically, the idea of a "remainder". when
                 working on Oners, I came across the issue of player turn rotation when the list of players reached the
                 end - how do you make a set of data mathematically wrap back on itself?</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I found my answer, and the answer to like 80% of the
+            <p>I found my answer, and the answer to like 80% of the
                 problems I had with my array traversal in a single simple operator: modulo (known other places as mod()
                 or just "%"). This operator is the key to all things pseudo-circular, and is one of the most basic
                 mathematical operators in all of programming -</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and somehow I had forgotten it.</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;What this beautiful little percent symbol holds is the
+            <p>and somehow I had forgotten it.</p>
+            <p>What this beautiful little percent symbol holds is the
                 power to wrap our "rows" - taking the remainder of any number as a divisor into the width as the
                 dividend, you get a remainder that corresponds to its index in the row. it's a lot easier to explain
                 with a visual aid.</p><img style="mix-blend-mode:multiply;"
                 src="https://cdn.discordapp.com/attachments/193119085247070218/1111166283833163827/image.png" />
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using this knowledge, we can now say we understand what a
+            <p>Using this knowledge, we can now say we understand what a
                 left and right "wall" mean - if (x % width) is equal to (width - 1), we know we are as far right as we
                 can go, and if (x % width) is equal to 0, we know we are as far left as we can go. that's one set of
                 boundaries finished; now we handle the potential index-out-of-bounds-ish stuff.</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Knowing that you're too high up came to me fairly
+            <p>Knowing that you're too high up came to me fairly
                 quickly; logically, your top row contains indices from 0 to (width - 1), so if you're in those indices,
                 moving north should not work. With that information, logically the last (width) indices should do
                 likewise for moving down - if you're within the indices (length - width) to (length-1) you're at the
                 bottom of the square.</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Just like that, we have our boundaries. Now let's
+            <p>Just like that, we have our boundaries. Now let's
                 implement them!</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First, let's set up our traversal functions using the
+            <p>First, let's set up our traversal functions using the
                 knowledge from above</p>
             <pre><code class="language-rust">
 // main() {...}
@@ -173,7 +173,77 @@ fn traverse_right(
         new_pos
 }
             </code></pre>
-            <p></p>
+            <p>Now, we actually print the directions out to the console in main():</p>
+            <pre><code class="language-rust">
+// main { ...
+cursor = traverse_down(cursor, width, pseudo_square);
+println!("{}",pseudo_square[cursor]);
+// bottom wall
+cursor = traverse_down(cursor, width, pseudo_square);
+println!("{}",pseudo_square[cursor]);
+
+cursor = traverse_right(cursor, width, pseudo_square);
+println!("{}",pseudo_square[cursor]);
+// right wall
+cursor = traverse_right(cursor, width, pseudo_square);
+println!("{}",pseudo_square[cursor]);
+
+cursor = traverse_left(cursor, width, pseudo_square);
+println!("{}",pseudo_square[cursor]);
+cursor = traverse_left(cursor, width, pseudo_square);
+println!("{}",pseudo_square[cursor]);
+// left wall
+cursor = traverse_left(cursor, width, pseudo_square);
+println!("{}",pseudo_square[cursor]);
+
+cursor = traverse_up(cursor, width, pseudo_square);
+println!("{}",pseudo_square[cursor]);
+cursor = traverse_up(cursor, width, pseudo_square);
+println!("{}",pseudo_square[cursor]);
+// top wall
+cursor = traverse_up(cursor, width, pseudo_square);
+println!("{}",pseudo_square[cursor]);
+
+// ... }
+            </code></pre>
+            <p>This instruction set should yield the following output when we tell it to print out whatever letter is stored at the same index as the cursor:</p>
+            <pre><code class="language-bash">
+h
+h #bottom wall
+i
+i #right wall
+h
+g
+g #left wall
+d
+a
+a #top wall
+            </code></pre>
+            <p>with all of that done, all we have to do is come up with an elegant little way to render the "map" data so it's easier to look at. the easiest way I've found so far is to print out elements to stdout on eat a time, wrapping to a newline when the index in the array % width is equal to 0, and replacing the index that matches the cursor with a character that's distinguishable (I picked #).</p>
+            <pre><code class="language-rust">
+fn print_map(
+    cursor: usize,
+    width: usize,
+    ps: PseudoSquare
+    ) {
+
+        println!();
+        for i in 0..ps.len() {
+            if ((i % width) == 0) {
+                if cursor == i {
+                    print!("\n#");
+                } else { print!("\n{}",ps[i]) }
+                
+            } else {
+                if cursor == i {
+                    print!("#");
+                } else {
+                    print!("{}",ps[i]);
+                }
+            }
+        } println!();
+}
+            </code></pre>
         </div>
     </div>
     <pre><h6>
