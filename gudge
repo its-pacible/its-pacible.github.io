@@ -1,5 +1,11 @@
 <DOCTYPE! html>
 <html>
+    <head>
+	<title>Gudge</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="web/style/melon.css">
+	<link rel="icon" type="image/x-icon" href="pacrat.ico">
+</head>
   <body>
     <h1>The Life of Gudge</h1>
     <p>Gudge is a little guy. He comes from the big city of Guagagagoop, on a journey to travel the world.
